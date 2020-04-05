@@ -62,8 +62,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/g++.exe
-CompilerVersion: 8.1.0
+Compiler: C:/minGWfolder/mingw64/bin/g++.exe
+CompilerVersion: 
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -78,7 +78,7 @@ MemoryCheckCommandOptions:
 MemoryCheckSuppressionFile: 
 
 # Coverage
-CoverageCommand: C:/Program Files/mingw-w64/x86_64-8.1.0-win32-seh-rt_v6-rev0/mingw64/bin/gcov.exe
+CoverageCommand: C:/minGWfolder/mingw64/bin/gcov.exe
 CoverageExtraFlags: -l
 
 # Cluster commands

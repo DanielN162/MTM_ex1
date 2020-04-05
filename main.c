@@ -12,4 +12,3 @@ int main(int argc, char const *argv[]) {
   /* printArray(argv + 1, argc - 1); */
   return 0;
 }
-

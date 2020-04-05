@@ -76,15 +76,15 @@ include CMakeFiles/ex1.dir/flags.make
 CMakeFiles/ex1.dir/main.c.obj: CMakeFiles/ex1.dir/flags.make
 CMakeFiles/ex1.dir/main.c.obj: ../main.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\danie\Documents\GitHub\MTM_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ex1.dir/main.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ex1.dir\main.c.obj   -c C:\Users\danie\Documents\GitHub\MTM_ex1\main.c
+	C:\minGWfolder\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ex1.dir\main.c.obj   -c C:\Users\danie\Documents\GitHub\MTM_ex1\main.c
 
 CMakeFiles/ex1.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ex1.dir/main.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\danie\Documents\GitHub\MTM_ex1\main.c > CMakeFiles\ex1.dir\main.c.i
+	C:\minGWfolder\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\danie\Documents\GitHub\MTM_ex1\main.c > CMakeFiles\ex1.dir\main.c.i
 
 CMakeFiles/ex1.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ex1.dir/main.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-W\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\danie\Documents\GitHub\MTM_ex1\main.c -o CMakeFiles\ex1.dir\main.c.s
+	C:\minGWfolder\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\danie\Documents\GitHub\MTM_ex1\main.c -o CMakeFiles\ex1.dir\main.c.s
 
 # Object files for target ex1
 ex1_OBJECTS = \

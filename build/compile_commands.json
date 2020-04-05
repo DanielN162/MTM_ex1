@@ -1,7 +1,7 @@
 [
 {
   "directory": "C:/Users/danie/Documents/GitHub/MTM_ex1/build",
-  "command": "C:\\PROGRA~1\\MINGW-~1\\X86_64~1.0-W\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\ex1.dir\\main.c.obj   -c C:\\Users\\danie\\Documents\\GitHub\\MTM_ex1\\main.c",
+  "command": "C:\\minGWfolder\\mingw64\\bin\\gcc.exe   -std=c99 --pedantic-errors -Wall -Werror -g   -o CMakeFiles\\ex1.dir\\main.c.obj   -c C:\\Users\\danie\\Documents\\GitHub\\MTM_ex1\\main.c",
   "file": "C:/Users/danie/Documents/GitHub/MTM_ex1/main.c"
 }
 ]
