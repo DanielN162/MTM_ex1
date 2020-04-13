@@ -712,12 +712,12 @@ CMakeFiles/ContinuousStart.dir/clean:
 CMakeFiles/ex1.dir/all:
 	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/depend
 	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\danie\Documents\GitHub\MTM_ex1\build\CMakeFiles --progress-num=1,2 "Built target ex1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\danie\Documents\GitHub\MTM_ex1\build\CMakeFiles --progress-num=1,2,3 "Built target ex1"
 .PHONY : CMakeFiles/ex1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ex1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\danie\Documents\GitHub\MTM_ex1\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\danie\Documents\GitHub\MTM_ex1\build\CMakeFiles 3
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/ex1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\danie\Documents\GitHub\MTM_ex1\build\CMakeFiles 0
 .PHONY : CMakeFiles/ex1.dir/rule

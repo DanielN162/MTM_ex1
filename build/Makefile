@@ -536,32 +536,59 @@ ContinuousCoverage/fast:
 	$(MAKE) -f CMakeFiles\ContinuousCoverage.dir\build.make CMakeFiles/ContinuousCoverage.dir/build
 .PHONY : ContinuousCoverage/fast
 
-main.obj: main.c.obj
+map.obj: map.c.obj
 
-.PHONY : main.obj
+.PHONY : map.obj
 
 # target to build an object file
-main.c.obj:
-	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/main.c.obj
-.PHONY : main.c.obj
+map.c.obj:
+	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/map.c.obj
+.PHONY : map.c.obj
 
-main.i: main.c.i
+map.i: map.c.i
 
-.PHONY : main.i
+.PHONY : map.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/main.c.i
-.PHONY : main.c.i
+map.c.i:
+	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/map.c.i
+.PHONY : map.c.i
 
-main.s: main.c.s
+map.s: map.c.s
 
-.PHONY : main.s
+.PHONY : map.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/main.c.s
-.PHONY : main.c.s
+map.c.s:
+	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/map.c.s
+.PHONY : map.c.s
+
+testing.obj: testing.c.obj
+
+.PHONY : testing.obj
+
+# target to build an object file
+testing.c.obj:
+	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/testing.c.obj
+.PHONY : testing.c.obj
+
+testing.i: testing.c.i
+
+.PHONY : testing.i
+
+# target to preprocess a source file
+testing.c.i:
+	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/testing.c.i
+.PHONY : testing.c.i
+
+testing.s: testing.c.s
+
+.PHONY : testing.s
+
+# target to generate assembly for a file
+testing.c.s:
+	$(MAKE) -f CMakeFiles\ex1.dir\build.make CMakeFiles/ex1.dir/testing.c.s
+.PHONY : testing.c.s
 
 # Help Target
 help:
@@ -603,9 +630,12 @@ help:
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
 	@echo ... ex1
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... map.obj
+	@echo ... map.i
+	@echo ... map.s
+	@echo ... testing.obj
+	@echo ... testing.i
+	@echo ... testing.s
 .PHONY : help
 
 

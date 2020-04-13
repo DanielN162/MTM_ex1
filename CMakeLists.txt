@@ -4,7 +4,7 @@ project(ex1 VERSION 0.1.0 LANGUAGES C)
 include(CTest)
 enable_testing()
 
-add_executable(ex1 main.c)
+add_executable(ex1 map.c testing.c)
 
 # Set variables holding flags for gcc 
 set(MTM_FLAGS_DEBUG "-std=c99 --pedantic-errors -Wall -Werror") 

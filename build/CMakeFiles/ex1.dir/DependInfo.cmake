@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/danie/Documents/GitHub/MTM_ex1/main.c" "C:/Users/danie/Documents/GitHub/MTM_ex1/build/CMakeFiles/ex1.dir/main.c.obj"
+  "C:/Users/danie/Documents/GitHub/MTM_ex1/map.c" "C:/Users/danie/Documents/GitHub/MTM_ex1/build/CMakeFiles/ex1.dir/map.c.obj"
+  "C:/Users/danie/Documents/GitHub/MTM_ex1/testing.c" "C:/Users/danie/Documents/GitHub/MTM_ex1/build/CMakeFiles/ex1.dir/testing.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
