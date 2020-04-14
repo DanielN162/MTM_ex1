@@ -41,6 +41,15 @@ static Map_Node createMapNode(const char* key, const char* data);
 */
 static MapResult updateValue(Map_Node ptr, const char* data);
 
+/**
+*	destroyMapNode: frees the memory of the key and value, 
+* then frees the node itself.
+* MUST make sure removing the node won't ruin the list.
+*
+* @param ptr - The node to destroy
+*/
+static void destroyMapNode(Map_Node ptr);
+
 //-------------------------------------------------------------------//
 /*HELPER FUNCTIONS*/
 
@@ -85,6 +94,15 @@ static MapResult updateValue(Map_Node ptr, const char* data) {
   ptr->value = data_copy;
 
   return MAP_SUCCESS;
+}
+
+static void destroyMapNode(Map_Node ptr) {
+  assert(ptr);
+  assert(ptr->key && ptr-> value);
+
+  free(ptr->key);
+  free(ptr->value);
+  free(ptr);
 }
 
 //-------------------------------------------------------------------//
@@ -148,4 +166,50 @@ MapResult mapPut(Map map, const char* key, const char* data) {
   }
 
   return MAP_SUCCESS;
+}
+
+//8
+MapResult mapRemove(Map map, const char* key) {
+  if(map == NULL || key == NULL) {
+    return MAP_NULL_ARGUMENT;
+  }
+
+  Map_Node ptr = map->elements;
+  if(!strcmp(ptr->key, key)) { //need to remove the first key
+    map->elements = ptr->next;
+    destroyMapNode(ptr);
+    return MAP_SUCCESS;
+  }
+
+  while(ptr->next) {
+    Map_Node toDelete = ptr->next;
+    
+    if(!strcmp(toDelete->key, key)) { 
+      ptr->next = toDelete->next;
+      destroyMapNode(toDelete);
+      return MAP_SUCCESS;
+    }
+
+    ptr = ptr->next;
+  }
+
+  return MAP_ITEM_DOES_NOT_EXIST;
+}
+
+//10
+char* mapGetNext(Map map) {
+  if(map == NULL) {
+    return NULL;
+  }
+
+  if(map->iterator == NULL) {
+    return NULL;
+  }
+
+  if(map->iterator->next == NULL) {
+    return NULL;
+  }
+
+  map->iterator = map->iterator->next;
+  return map->iterator->key;
 }
