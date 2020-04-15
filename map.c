@@ -91,6 +91,7 @@ static MapResult updateValue(Map_Node ptr, const char* data) {
   }
 
   strcpy(data_copy, data);
+  free(ptr->value);
   ptr->value = data_copy;
 
   return MAP_SUCCESS;
@@ -145,6 +146,17 @@ MapResult mapPut(Map map, const char* key, const char* data) {
     return MAP_NULL_ARGUMENT;
   }
 
+  map->iterator = NULL;
+
+  if(map->elements == NULL) { //empty map
+    map->elements = createMapNode(key, data);
+    if(map->elements == NULL) {
+      return MAP_OUT_OF_MEMORY;
+    }
+
+    return MAP_SUCCESS;
+  }
+
   Map_Node ptr = map->elements;
 
   while(ptr) {
@@ -152,7 +164,7 @@ MapResult mapPut(Map map, const char* key, const char* data) {
       return updateValue(ptr, data);
     }
 
-    else if(ptr->next == NULL) {
+    if(ptr->next == NULL) { //reached end of list
       break;
     }
 
@@ -173,6 +185,8 @@ MapResult mapRemove(Map map, const char* key) {
   if(map == NULL || key == NULL) {
     return MAP_NULL_ARGUMENT;
   }
+
+  map->iterator = NULL;
 
   Map_Node ptr = map->elements;
   if(!strcmp(ptr->key, key)) { //need to remove the first key
