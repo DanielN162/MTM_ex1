@@ -1,6 +1,7 @@
 #include "map.h"
 #include <assert.h>
 #include <stdlib.h>
+#include <stdio.h> 
 
 #define INVALID_SIZE -1
 
@@ -59,14 +60,14 @@ static Map_Node createMapNode(const char* key, const char* data) {
     return NULL;
   }
 
-  char* key_copy = malloc(sizeof(*key));
+  char* key_copy = malloc(strlen(key)+1);
   if(key_copy == NULL) {
     free(ptr);
     return NULL;
   }
   strcpy(key_copy, key);
 
-  char* data_copy = malloc(sizeof(*data));
+  char* data_copy = malloc(strlen(data)+1);
   if(data_copy == NULL) {
     free(key_copy);
     free(ptr);
@@ -83,9 +84,9 @@ static Map_Node createMapNode(const char* key, const char* data) {
 
 static MapResult updateValue(Map_Node ptr, const char* data) {
   assert(ptr);
-  assert(ptr->key && ptr-> value);
+  assert(ptr->key && ptr->value);
 
-  char* data_copy = malloc(sizeof(*data));
+  char* data_copy = malloc(strlen(data)+1);
   if(data_copy == NULL) {
     return MAP_OUT_OF_MEMORY;
   }
@@ -99,7 +100,7 @@ static MapResult updateValue(Map_Node ptr, const char* data) {
 
 static void destroyMapNode(Map_Node ptr) {
   assert(ptr);
-  assert(ptr->key && ptr-> value);
+  assert(ptr->key && ptr->value);
 
   free(ptr->key);
   free(ptr->value);
@@ -109,13 +110,58 @@ static void destroyMapNode(Map_Node ptr) {
 //-------------------------------------------------------------------//
 /*ADT FUNCTIONS*/
 
+//1
+Map mapCreate()
+{
+    Map new_map = malloc(sizeof(*new_map));
+    if(!new_map)
+    {
+      return NULL;
+    }
+    new_map->elements = NULL;
+    new_map->iterator = NULL;
+    return new_map;
+}
+
+
 //2
 void mapDestroy(Map map) {
   if(map) {
-    MapResult clear_msg = mapClear(map);
-    assert(clear_msg == MAP_SUCCESS);
+    mapClear(map);
     free(map);
   }
+}
+
+//3
+Map mapCopy(Map map) {
+  if(map == NULL) {
+    return NULL;
+  }
+
+  map->iterator = NULL;
+
+  if(map->elements == NULL) {
+    assert(map->iterator == NULL);
+    return mapCreate();
+  }
+
+  Map new_map = mapCreate();
+  if(new_map == NULL) {
+    return NULL;
+  }
+
+  Map_Node ptr = map->elements;
+  MapResult result;
+  while(ptr) {
+    result = mapPut(new_map, ptr->key, ptr->value);
+    if(result == MAP_OUT_OF_MEMORY) {
+      mapDestroy(new_map);
+      return NULL;
+    }
+    ptr = ptr->next;
+  }
+
+  return new_map;
 }
 
 //4
@@ -138,6 +184,31 @@ int mapGetSize(Map map) {
   }
 
   return counter;
+}
+
+//5
+bool mapContains(Map map, const char* key)
+{
+  if(map == NULL || key == NULL)
+  {
+    return false;
+  }
+
+  Map_Node ptr = map->elements;
+
+  while(ptr != NULL)
+  {
+    if(!strcmp(ptr->key, key))
+    {
+      return true;
+    }
+    else
+    {
+      ptr = ptr -> next;
+    }
+    
+  }
+  return false;
 }
 
 //6
@@ -180,6 +251,29 @@ MapResult mapPut(Map map, const char* key, const char* data) {
   return MAP_SUCCESS;
 }
 
+//7
+char* mapGet(Map map, const char* key)
+{
+  if(map == NULL || key == NULL) {
+    return NULL;
+  }
+  
+  Map_Node ptr = map->elements;
+
+  while(ptr != NULL)
+  {
+    if(!strcmp(ptr->key, key))
+    {
+      return ptr->value;
+    }
+    else
+    {
+      ptr = ptr->next;
+    }
+  }
+  return NULL;
+}
+
 //8
 MapResult mapRemove(Map map, const char* key) {
   if(map == NULL || key == NULL) {
@@ -189,6 +283,11 @@ MapResult mapRemove(Map map, const char* key) {
   map->iterator = NULL;
 
   Map_Node ptr = map->elements;
+
+  if(ptr == NULL) { //empty map
+    return MAP_ITEM_DOES_NOT_EXIST;
+  }
+
   if(!strcmp(ptr->key, key)) { //need to remove the first key
     map->elements = ptr->next;
     destroyMapNode(ptr);
@@ -210,6 +309,21 @@ MapResult mapRemove(Map map, const char* key) {
   return MAP_ITEM_DOES_NOT_EXIST;
 }
 
+//9
+char* mapGetFirst(Map map)
+{
+  if(map == NULL) {
+    return NULL;
+  }
+
+  if(map->elements == NULL) {
+    return NULL;
+  }
+
+  map->iterator = map->elements;
+  return map->iterator->key;
+}
+
 //10
 char* mapGetNext(Map map) {
   if(map == NULL) {
@@ -226,4 +340,32 @@ char* mapGetNext(Map map) {
 
   map->iterator = map->iterator->next;
   return map->iterator->key;
+}
+
+//11
+MapResult mapClear(Map map)
+{
+  if(map == NULL)
+  {
+    return MAP_NULL_ARGUMENT;
+  }
+
+  if(map->elements == NULL) {
+    assert(map->iterator == NULL);
+    return MAP_SUCCESS;
+  }
+
+  Map_Node ptr = map->elements;
+
+  while(ptr)
+  {
+    Map_Node nextNode = ptr->next;
+    destroyMapNode(ptr);
+    ptr = nextNode;
+  }
+
+  map->elements = NULL;
+  map->iterator = NULL;
+
+  return MAP_SUCCESS;
 }
